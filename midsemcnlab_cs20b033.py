@@ -52,3 +52,21 @@ def simulation(num_devices, p):
     avg_slots = np.mean(num_slots)
     
     return avg_slots
+# Plot the analysis and simulation results
+ps = [0.1, 0.15, 0.2, 0.25,0.3, 0.35,0.4]
+analysis_results = []
+simulation_results = []
+for p in ps:
+    expected_slots = analysis(4, p)
+    analysis_results.append(expected_slots)
+    
+    avg_slots = simulation(4, p)
+    simulation_results.append(avg_slots)
+
+plt.plot(ps, analysis_results, 'b--', label="Analysis")
+plt.plot(ps, simulation_results, 'ro-', label="Simulation (averaged over 1000 runs)")
+plt.xlabel("p")
+plt.ylabel("Expected number of slots")
+plt.legend()
+plt.savefig("midsemcnlab_cs20b033.pdf")
+plt.show()
