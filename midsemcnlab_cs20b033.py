@@ -48,3 +48,7 @@ def simulation(num_devices, p):
             curr_state = np.random.choice(range(num_devices+1), p=P[curr_state])
             num_steps += 1
         num_slots.append(num_steps)
+       # Calculate the average number of slots over the 1000 runs
+    avg_slots = np.mean(num_slots)
+    
+    return avg_slots
